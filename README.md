@@ -25,3 +25,9 @@ These are the tools we will be using to build our website:
 * GitHub
 * Jira - Project Management - https://www.atlassian.com/software/jira
 * Selenium - Functionality Testing - https://www.selenium.dev/
+
+## Getting Started - Developers
+Set up repository
+...
+
+Inside of C:\...\pnwcsclub run `npm start`
