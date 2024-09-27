@@ -24,3 +24,4 @@ These are the tools we will be using to build our website:
 * PostgreSQL - https://www.postgresql.org/
 * GitHub
 * Jira - Project Management - https://www.atlassian.com/software/jira
+* Selenium - Functionality Testing - https://www.selenium.dev/
