@@ -29,5 +29,5 @@ These are the tools we will be using to build our website:
 ## Getting Started - Developers
 Set up repository
 ...
-
+Install Node.js and npm using `npm install -g npm`
 Inside of C:\...\pnwcsclub run `npm start`
