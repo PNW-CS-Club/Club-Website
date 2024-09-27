@@ -15,7 +15,6 @@ This website will have information for all things related to the Purdue Universi
 ## Features
 * Blog editor
 * User login
-* 
 
 ## Tech Stack
 These are the tools we will be using to build our website: 
