@@ -27,7 +27,13 @@ These are the tools we will be using to build our website:
 * Selenium - Functionality Testing - https://www.selenium.dev/
 
 ## Getting Started - Developers
-Set up repository
-...
-Install Node.js and npm using `npm install -g npm`
-Inside of C:\...\pnwcsclub run `npm start`
+* You must have Node.js and npm installed on your machine to run this project.
+  - If you do not have Node.js already: Install Node.js and npm using here: https://nodejs.org/en/download/prebuilt-installer
+* Set up repository
+  - Either using `git clone https://github.com/PNW-CS-Club/Club-Website.git` in a CLI or using software like GitHub Desktop
+* Open the git repo in your code editor of choice
+* Using the CLI/Terminal, do `cd pnwcsclub` to navigate to the project folder
+* Run `npm install` to install all the dependencies
+* Inside of C:\...\pnwcsclub run `npm run dev` to start the development server
+* Open your browser and navigate to the given localhost to see the website
+
