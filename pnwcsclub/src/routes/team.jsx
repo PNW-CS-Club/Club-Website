@@ -14,6 +14,7 @@ export default function Team() {
             <p>desc: loreum ipsum</p>
             <h2>name</h2>
             <p>desc: loreum ipsum</p>
+            <a href ="/">Home</a>
         </div>
         
 
