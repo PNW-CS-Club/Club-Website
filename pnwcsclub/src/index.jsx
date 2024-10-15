@@ -1,21 +1,34 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import './index.css';
+import * as React from "react";
+import * as ReactDOM from "react-dom/client";
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import "./index.css";
 
-// Create the root for the React app
-const domNode = document.getElementById('root');
-const root = ReactDOM.createRoot(domNode);
+//routes
+import Root from "./routes/root";
+import ErrorPage from "./error-page";
+import Team from "./routes/team";
 
-// Standard function declaration for rendering the app
-function renderApp() {
-  root.render(
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  );
-}
+//create router this handles the routing of the website, if you want to add a new page
+// you need to add a new route here, follow the format of the existing routes(team for example)
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/team",
+    element: <Team />,
+    errorElement: <ErrorPage />,
+  }
+]);
 
-// Call the render function
-renderApp();
-
+//render the router to the root element
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);
