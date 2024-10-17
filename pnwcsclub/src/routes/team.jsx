@@ -12,8 +12,10 @@ export default function Team() {
             <h1>The Team:</h1>
             <h2>President: [insert]</h2>
             <p>desc: loreum ipsum</p>
-            <h2>name</h2>
-            <p>desc: loreum ipsum</p>
+            <h2>Peter Bizoukas</h2>
+            <p>desc: guy</p>
+            <h2></h2>
+            <p>desc:</p>
             <a href ="/">Home</a>
         </div>
         
