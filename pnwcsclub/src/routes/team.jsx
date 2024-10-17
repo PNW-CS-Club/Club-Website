@@ -14,8 +14,8 @@ export default function Team() {
             <p>desc: loreum ipsum</p>
             <h2>Peter Bizoukas</h2>
             <p>desc: guy</p>
-            <h2></h2>
-            <p>desc:</p>
+            <h2>Kamil Zhu</h2>
+            <p>desc:N/A</p>
             <a href ="/">Home</a>
         </div>
         
