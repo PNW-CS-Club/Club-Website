@@ -16,7 +16,6 @@ export default function Team() {
             <p>desc: guy</p>
             <h2>Kamil Zhu</h2>
             <p>desc:N/A</p>
-            <a href ="/">Home</a>
             <h2>Ryan Mueller</h2>
             <p>desc: locked in</p>
         </div>
