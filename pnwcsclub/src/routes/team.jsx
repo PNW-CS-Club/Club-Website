@@ -1,5 +1,7 @@
 import React from 'react';
 import { useRouteError } from "react-router-dom";
+import '../team.css';
+
 
 export default function Team() {
     //error handling -- redirects to error page if error occurs, ie: invalid path/route
@@ -18,6 +20,17 @@ export default function Team() {
             <p>desc:N/A</p>
             <h2>Ryan Mueller</h2>
             <p>desc: locked in</p>
+            
+            <h2>President: [insert]</h2>
+            <p>desc: loreum ipsum</p>
+            <h2>name</h2>
+            <p>desc: loreum ipsum</p>
+            <a href ="/">Home</a>
+            <div className="andrewCard">
+                <h2>John FAANG Pork</h2>
+                <img src='/andrewGoofy.png'/>
+                <p>Locked In</p>
+            </div>
         </div>
         
 
