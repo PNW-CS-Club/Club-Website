@@ -19,18 +19,16 @@ export default function Team() {
             <h2>Kamil Zhu</h2>
             <p>desc:N/A</p>
             <h2>Ryan Mueller</h2>
-            <p>desc: locked in</p>
-            
-            <h2>President: [insert]</h2>
-            <p>desc: loreum ipsum</p>
-            <h2>name</h2>
-            <p>desc: loreum ipsum</p>
+            <p>desc: locked in</p>     
             <a href ="/">Home</a>
             <div className="andrewCard">
                 <h2>John FAANG Pork</h2>
                 <img src='/andrewGoofy.png'/>
                 <p>Locked In</p>
             </div>
+            <h2>Micah Najacht</h2>
+            <p>desc: Badger</p>
+
         </div>
         
 
