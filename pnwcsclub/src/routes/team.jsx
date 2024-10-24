@@ -20,10 +20,9 @@ export default function Team() {
             <p>desc:N/A</p>
             <h2>Ryan Mueller</h2>
             <p>desc: locked in</p>     
-            <a href ="/">Home</a>
             <div className="andrewCard">
                 <h2>John FAANG Pork</h2>
-                <img src='/andrewGoofy.png'/>
+                <img src='../images/andrewGoofy.png'/>
                 <p>Locked In</p>
             </div>
             <h2>Micah Najacht</h2>
