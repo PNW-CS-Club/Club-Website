@@ -14,7 +14,7 @@
     text-decoration: none;
   }
   
-  .navbar-center .nav-links {
+  .navbar-center .nav-links{
     list-style-type: none;
     display: flex;
     margin: 0;
@@ -50,6 +50,9 @@
   .navbar-right .nav-links li {
     margin-right: 1rem;
   }
+
+  /*TODO: we need to make this repsonsive, ie. when the screen is small
+    the navbar should collapse into a hamburger menu*/
 
   .img {
     width: 100%;
