@@ -10,6 +10,12 @@ import "./index.css";
 import Root from "./routes/root";
 import ErrorPage from "./error-page";
 import Team from "./routes/team";
+import Projects from "./routes/projects";
+import Events from "./routes/events";
+import Contact from "./routes/contact";
+import Blog from "./routes/blog";
+import Login from "./routes/login";
+
 
 //create router this handles the routing of the website, if you want to add a new page
 // you need to add a new route here, follow the format of the existing routes(team for example)
@@ -18,12 +24,33 @@ const router = createBrowserRouter([
     path: "/",
     element: <Root />,
     errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "team",
+        element: <Team />,
+      },
+      {
+        path: "projects",
+        element: <Projects />,
+      },
+      {
+        path: "events",
+        element: <Events />,
+      },
+      {
+        path: "contact",
+        element: <Contact />,
+      },
+      {
+        path: "blog",
+        element: <Blog />,
+      },
+      {
+        path: "login",
+        element: <Login />,
+      }
+    ],
   },
-  {
-    path: "/team",
-    element: <Team />,
-    errorElement: <ErrorPage />,
-  }
 ]);
 
 //render the router to the root element
