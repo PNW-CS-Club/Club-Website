@@ -22,7 +22,7 @@ export default function Team() {
             <p>desc: locked in</p>     
             <div className="andrewCard">
                 <h2>John FAANG Pork</h2>
-                <img src='../images/andrewGoofy.png'/>
+                <img src='/images/andrewGoofy.png'/>
                 <p>Locked In</p>
             </div>
             <h2>Micah Najacht</h2>
