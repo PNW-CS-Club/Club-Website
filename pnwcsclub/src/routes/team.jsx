@@ -18,6 +18,8 @@ export default function Team() {
             <p>desc:N/A</p>
             <h2>Ryan Mueller</h2>
             <p>desc: locked in</p>
+            <h2>Micah Najacht</h2>
+            <p>desc: Badger</p>
         </div>
         
 
