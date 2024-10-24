@@ -10,8 +10,8 @@ export default function Team() {
     return (
         <div>
             <h1>The Team:</h1>
-            <h2>President: [insert]</h2>
-            <p>desc: loreum ipsum</p>
+            <h2>President: Julian Sahagun</h2>
+            <p>desc: pork</p>
             <h2>Peter Bizoukas</h2>
             <p>desc: guy</p>
             <h2>Kamil Zhu</h2>
