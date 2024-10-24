@@ -7,7 +7,7 @@ const Navbar = () => {
   <nav className="navbar">
     <div className="navbar-left">
       <a href="/" className="logo">
-        PNW CS Club
+        <img src="/logo32trans.png" alt="pnw cs club logo" with="32" height="32"></img>
       </a>
     </div>
     <div className="navbar-center">
@@ -30,13 +30,11 @@ const Navbar = () => {
       </ul>
     </div>
     <div className="navbar-right">
-      <a href="/login" className="cart-icon">
-        <i className="fas fa-shopping-cart"></i>
-        <span className="cart-count">0</span>
-      </a>
-      <a href="/account" className="user-icon">
-        <i className="fas fa-user"></i>
-      </a>
+       <ul className="nav-links">
+        <li>
+            <a href="/login">Login</a>
+        </li>   
+       </ul>
     </div>
   </nav>
   );
