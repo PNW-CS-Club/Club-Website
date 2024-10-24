@@ -7,14 +7,14 @@ import {
 import "./index.css";
 
 //routes
-import Root from "./routes/root";
+import Root from "./pages/root";
 import ErrorPage from "./error-page";
-import Team from "./routes/team";
-import Projects from "./routes/projects";
-import Events from "./routes/events";
-import Contact from "./routes/contact";
-import Blog from "./routes/blog";
-import Login from "./routes/login";
+import Team from "./pages/team";
+import Projects from "./pages/projects";
+import Events from "./pages/events";
+import Contact from "./pages/contact";
+import Blog from "./pages/blog";
+import Login from "./pages/login";
 
 
 //create router this handles the routing of the website, if you want to add a new page
