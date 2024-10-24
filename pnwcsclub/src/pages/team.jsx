@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouteError } from "react-router-dom";
-import '../team.css';
+import '/src/styles/team.css';
 
 
 export default function Team() {
