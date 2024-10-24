@@ -25,6 +25,8 @@ export default function Team() {
                 <img src='/images/andrewGoofy.png'/>
                 <p>Locked In</p>
             </div>
+            <h2>Diya Kafle</h2>
+            <p>hi</p>
             <h2>Micah Najacht</h2>
             <p>desc: Badger</p>
 
