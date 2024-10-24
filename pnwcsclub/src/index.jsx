@@ -4,17 +4,17 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import "./index.css";
+import "/src/styles/index.css";
 
 //routes
-import Root from "./pages/root";
-import ErrorPage from "./error-page";
-import Team from "./pages/team";
-import Projects from "./pages/projects";
-import Events from "./pages/events";
-import Contact from "./pages/contact";
-import Blog from "./pages/blog";
-import Login from "./pages/login";
+import App from "./App";
+import ErrorPage from "/src/pages/error-page";
+import Team from "/src/pages/team";
+import Projects from "/src/pages/projects";
+import Events from "/src/pages/events";
+import Contact from "/src/pages/contact";
+import Blog from "/src/pages/blog";
+import Login from "/src/pages/login";
 
 
 //create router this handles the routing of the website, if you want to add a new page
@@ -22,7 +22,7 @@ import Login from "./pages/login";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
+    element: <App />,
     errorElement: <ErrorPage />,
     children: [
       {

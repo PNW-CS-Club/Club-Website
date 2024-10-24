@@ -1,5 +1,5 @@
 import React from 'react';
-import './navbar.css';
+import '/src/styles/navbar.css';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
@@ -13,6 +13,9 @@ const Navbar = () => {
     </div>
     <div className="navbar-center">
       <ul className="nav-links">
+        <li>
+          <Link to={'/'} aria-label="Home page">Home</Link>
+        </li>
         <li>
           <Link to={'projects'} aria-label="Projects page">Projects</Link>
         </li>
