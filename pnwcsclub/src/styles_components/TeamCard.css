@@ -1,0 +1,39 @@
+
+
+.team-card {
+    margin: 0; 
+    padding: 1rem; 
+    border-radius: 12px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    background: linear-gradient(90deg, #1053a0c9 0%, #0f5096 100%);
+    background: -webkit-linear-gradient(90deg, #1053a0c9 0%, #0f5096 100%); /* For Safari 5.1 to 6.0 */
+    background: -moz-linear-gradient(90deg, #1053a0c9 0%, #0f5096 100%); /* For Firefox 15 and earlier */
+    background: -o-linear-gradient(90deg, #1053a0c9 0%, #0f5096 100%); /* For Opera 11.1 to 12.0 */
+    background: -ms-linear-gradient(90deg, #1053a0c9 0%, #0f5096 100%); /* For Internet Explorer 10 */
+
+    height: 250px;
+    box-sizing: border-box; 
+    color: white;
+}
+
+.team-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 25%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.team-card h3 {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+  }
+  
+.team-card p {
+    margin: 0.3rem 0;
+    color: #eeeeee;
+}
+
+.team-card:hover {
+    transform: translateY(-5px); /* Lift on hover */
+}
