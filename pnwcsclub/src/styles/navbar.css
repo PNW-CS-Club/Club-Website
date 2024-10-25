@@ -47,7 +47,7 @@
 }
 
 body {
-  margin-top: 80px; /* Điều chỉnh giá trị này theo chiều cao thực tế của navbar */
+  margin-top: 80px; /* Adjust this value according to the actual height of the navbar */
 }
 
 .navbar-left .logo img {
@@ -162,7 +162,7 @@ body {
   }
 }
 
-/* Hiệu ứng gạch chân cho menu items */
+/* Underline effect for menu items */
 .nav-links a::after {
   content: '';
   position: absolute;
