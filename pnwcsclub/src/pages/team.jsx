@@ -1,6 +1,7 @@
 import React from 'react';
 import { useRouteError } from "react-router-dom";
-import '/src/styles/team.css';
+import '/src/styles_pages/team.css';
+import TeamCard from '/src/components/TeamCard';
 
 
 export default function Team() {
@@ -10,26 +11,17 @@ export default function Team() {
 
     //basic placeholder team page, needs css and actual team members
     return (
-        <div>
-            <h1>The Team:</h1>
-            <h2>President: Julian Sahagun</h2>
-            <p>desc: pork</p>
-            <h2>Peter Bizoukas</h2>
-            <p>desc: guy</p>
-            <h2>Kamil Zhu</h2>
-            <p>desc:N/A</p>
-            <h2>Ryan Mueller</h2>
-            <p>desc: locked in</p>     
-            <div className="andrewCard">
-                <h2>John FAANG Pork</h2>
-                <img src='/images/andrewGoofy.png'/>
-                <p>Locked In</p>
+        <div className="team-section">
+            <h1 className='h1--team'>The Team🤖🎉</h1>
+            <div className="div--cards">
+                <TeamCard name="Julian Sahagun" role="President" about="About: pork fr" />
+                <TeamCard name="Peter Bizoukas" about="About: guy" />
+                <TeamCard name="Kamil Zhu" about="About: N/A" />
+                <TeamCard name="Ryan Mueller" about="About: locked in" />
+                <TeamCard name="Andrew McDowell" about="About: locked in" img="/images/andrewGoofy.png" />
+                <TeamCard name="Diya Kafle" about="About: hi" />
+                <TeamCard name="Micah Najacht" about="About: Badger" />
             </div>
-            <h2>Diya Kafle</h2>
-            <p>hi</p>
-            <h2>Micah Najacht</h2>
-            <p>desc: Badger</p>
-
         </div>
         
 
