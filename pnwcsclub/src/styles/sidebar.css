@@ -1,0 +1,83 @@
+/* General Layout */
+body {
+    margin: 0; 
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 220px; 
+    background-color: #CCCCCC; 
+    height: 100vh; 
+    padding-top: 50px;
+    position: fixed; 
+    top: 60px; 
+    left: 0; 
+    overflow-y: auto; 
+    z-index: 99; 
+    transition: width 0.3s ease, margin-left 0.3s ease; /* Transition effect for smooth hide/show */
+}
+
+.sidebar .menu-section {
+    padding: 0 20px; 
+    margin-bottom: 15px; 
+}
+
+/* Styles for toggle button */
+.sidebar .toggle-button {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    width: 100%; 
+    background: none; 
+    border: none; 
+    color: #666666; 
+    cursor: pointer; 
+    font-weight: normal; 
+    font-size: 20px; 
+}
+
+.sidebar .arrow {
+    margin-left: 10px; 
+    transition: transform 0.3s ease; 
+}
+
+.sidebar .menu-section.active .arrow {
+    transform: rotate(180deg); 
+}
+
+.sidebar .menu-section .toggle-button.active {
+    color: #232323;
+    font-weight: bold; 
+}
+
+.sidebar .menu-section button:hover {
+    color: #232323;
+}
+
+.sidebar .menu-section ul {
+    list-style: none; 
+    padding-left: 15px; 
+    margin-top: 5px; 
+}
+
+.sidebar .menu-section ul li {
+    margin-bottom: 10px; 
+}
+
+.sidebar .menu-section ul li a {
+    color: #666666; 
+    text-decoration: none; 
+    font-size: 16px; 
+}
+
+.sidebar .menu-section ul li a:hover {
+    color: #ffffff; 
+    text-decoration: underline; 
+}
+
+.sidebar .menu-section a {
+    color: #7289da; 
+    text-decoration: none; 
+    font-size: 16px; 
+    font-weight: bold; 
+}
