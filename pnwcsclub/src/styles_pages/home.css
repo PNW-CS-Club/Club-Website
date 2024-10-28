@@ -1,0 +1,184 @@
+/* Base styles */
+.landing-page {
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #f9fafb, #f3f4f6);
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  /* Hero Section */
+  .hero-section {
+    padding: 5rem 1rem 4rem;
+    text-align: center;
+  }
+  
+  .hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.5rem;
+    color: #4B5563;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-description {
+    font-size: 1.125rem;
+    color: #4B5563;
+    max-width: 48rem;
+    margin: 0 auto 2rem;
+    line-height: 1.7;
+  }
+  
+  /* Features Section */
+  .features-section {
+    padding: 4rem 1rem;
+    background-color: white;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #111827;
+  }
+  
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+  }
+  
+  @media (min-width: 768px) {
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .features-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+  .feature-card {
+    padding: 1.5rem;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .feature-card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .feature-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .feature-icon {
+    margin-bottom: 1rem;
+    color: #2563EB;
+  }
+  
+  .icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  
+  .feature-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #111827;
+  }
+  
+  .feature-description {
+    color: #6B7280;
+  }
+  
+  /* Offerings Section */
+  .offerings-section {
+    padding: 4rem 1rem;
+  }
+  
+  .offerings-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+  }
+  
+  @media (min-width: 768px) {
+    .offerings-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .offering-card {
+    padding: 1.5rem;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .offering-card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .offering-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: #111827;
+  }
+  
+  .offering-description {
+    color: #6B7280;
+  }
+  
+  /* CTA Section */
+  .cta-section {
+    padding: 4rem 1rem;
+    background-color: #2563EB;
+    color: white;
+    text-align: center;
+  }
+  
+  .cta-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+  
+  .cta-description {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  
+  .cta-button {
+    background-color: white;
+    color: #2563EB;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cta-button:hover {
+    background-color: #f3f4f6;
+  }
+  
+  /* Footer */
+  .footer {
+    padding: 2rem 1rem;
+    background-color: #111827;
+    color: #9CA3AF;
+    text-align: center;
+  }
