@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import http from '../http-common';
 import '/src/styles_pages/home.css';
 
 const LandingPage = () => {
@@ -39,6 +40,13 @@ const LandingPage = () => {
       description: "Join a supportive environment where you can tackle challenges together"
     }
   ];
+
+    const [data, setData] = useState(null);
+
+    const handleButtonClick = async () => {
+        const response = await http.get('/test');
+        setData(response.data);
+    };
 
   return (
     <div className="landing-page">
@@ -116,6 +124,15 @@ const LandingPage = () => {
           <p>© {new Date().getFullYear()} Computer Science Club. All rights reserved.</p>
         </div>
       </footer>
+
+            <button onClick={handleButtonClick}>Test API</button>
+
+            {data && (
+                <div>
+                    <h2>API Response:</h2>
+                    <pre>{JSON.stringify(data, null, 2)}</pre>
+                </div>
+            )}
     </div>
   );
 };
