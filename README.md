@@ -48,3 +48,4 @@ These are the tools we will be using to build our website:
  - If you want to test specific functions, you can do `localhost:8080/api/{function}`
 * You will want to have the frontend running as well to see the full website
 
+- If you have any questions, please reach out to Julian or Me(Peter)
