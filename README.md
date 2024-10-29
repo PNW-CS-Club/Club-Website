@@ -37,3 +37,14 @@ These are the tools we will be using to build our website:
 * Inside of C:\...\pnwcsclub run `npm run dev` to start the development server
 * Open your browser and navigate to the given localhost to see the website
 
+## Backend
+* The backend is written in Java using the SpringBoot framework
+ - You will need to have Java and Maven installed on your machine
+ - This is a good resource if you need help installing Maven(Windows): https://phoenixnap.com/kb/install-maven-windows
+* The backend is located in the `pnwcsclub-backend` folder
+* To run the backend, navigate to the `pnwcsclub-backend` folder in your CLI
+* Run `mvn spring-boot:run` to start the backend server
+* The backend server will be running on `localhost:8080`
+ - If you want to test specific functions, you can do `localhost:8080/api/{function}`
+* You will want to have the frontend running as well to see the full website
+
