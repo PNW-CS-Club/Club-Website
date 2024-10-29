@@ -24,7 +24,7 @@ const Navbar = () => {
         <nav className="navbar" role="navigation">
             <div className="navbar-left">
                 <Link to={''} className="logo" onClick={closeMenu}>
-                    <img src="/logo200trans.png" alt="pnw cs club logo" width="32" height="32" />
+                    <img src="logos/logo200trans.png" alt="pnw cs club logo" width="32" height="32" />
                 </Link>
             </div>
             <div className="navbar-title">
