@@ -29,4 +29,9 @@
     color: seashell
 }
 
+@media screen and (max-width: 768px) {
+    .div--cards {
+        grid-template-columns: repeat(2, 1fr); /* Two equal-width columns */
+    }
+}
 
