@@ -32,9 +32,9 @@ These are the tools we will be using to build our website:
 * Set up repository
   - Either using `git clone https://github.com/PNW-CS-Club/Club-Website.git` in a CLI or using software like GitHub Desktop
 * Open the git repo in your code editor of choice
-* Using the CLI/Terminal, do `cd pnwcsclub` to navigate to the project folder
+* Using the CLI/Terminal, do `cd pnwcsclub-front` to navigate to the project folder
 * Run `npm install` to install all the dependencies
-* Inside of C:\...\pnwcsclub run `npm run dev` to start the development server
+* Inside of `C:\...\pnwcsclub-front` run `npm run dev` to start the development server
 * Open your browser and navigate to the given localhost to see the website
 
 ## Backend
