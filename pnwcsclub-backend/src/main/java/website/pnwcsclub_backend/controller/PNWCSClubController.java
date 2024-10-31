@@ -1,5 +1,6 @@
 package website.pnwcsclub_backend.controller;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,17 @@ public class PNWCSClubController {
      */
     @GetMapping("/test")
     public String test() {
-        return "Hello, World!";
+        return "Hello, test1!";
     }
+
+    @GetMapping("/test2")
+    public String test2() {
+        return "Hello, test2!";
+    }
+
+    /*
+     * Anything related to PostgreSQL ---------TODO: fill out
+     */
+  
+    
 }
