@@ -7,8 +7,12 @@ TODO: Add the database dump file to the repository.
 
 spring.application.name=pnwcsclub
 spring.datasource.url=jdbc:postgresql:*************
-spring.datasource.username=master
+spring.datasource.username=******
 spring.datasource.password=*******
 spring.jpa.hibernate.ddl-auto=<create | create-drop | update | validate | none>
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
 spring.jpa.hibernate.ddl-auto=none
+
+spring.sql.init.mode=always
+spring.sql.init.schema-locations=classpath:/schema.sql
+spring.sql.init.continue-on-error=true

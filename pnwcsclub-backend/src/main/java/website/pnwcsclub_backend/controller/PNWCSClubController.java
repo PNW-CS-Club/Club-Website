@@ -1,6 +1,10 @@
 package website.pnwcsclub_backend.controller;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,5 +40,16 @@ public class PNWCSClubController {
      * Anything related to PostgreSQL ---------TODO: fill out
      */
   
-    
+     
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
+    @GetMapping("/employee")
+    public String employee() {
+        String sql = "SELECT * FROM employee";
+        List<Map<String, Object>> rows;
+        rows = jdbcTemplate.queryForList(sql);
+        return rows.toString();
+    }
+
 }
