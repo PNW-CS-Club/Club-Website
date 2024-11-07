@@ -15,6 +15,7 @@ import Events from "/src/pages/events";
 import Contact from "/src/pages/contact";
 import Blog from "/src/pages/blog";
 import Login from "/src/pages/login";
+import Resources from "./pages/Resources";
 
 
 //create router this handles the routing of the website, if you want to add a new page
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "blog",
         element: <Blog />,
+      },
+      {
+        path: "resources",
+        element: <Resources />,
       },
       {
         path: "login",
