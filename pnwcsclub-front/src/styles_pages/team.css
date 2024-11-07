@@ -1,32 +1,30 @@
 .team-section {
-    padding: 2rem;
+    padding: 4rem 1rem;
     text-align: center;
-    font-family: Arial, sans-serif;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f8f9fa;
 }
 
 .about-team {
     margin-bottom: 2rem;
 }
 
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    color: #111827;
+}
+
 .div--cards {
     display: grid;
     gap: 2rem; /* Space between cards */
-    grid-template-columns: repeat(3, 1fr); /* Three equal-width columns */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
 }
 
-.h1--team {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    background: linear-gradient(90deg, #55708fc9 0%, #000000 100%);
-    background: -webkit-linear-gradient(90deg, #55708fc9 0%, #000000 100%); /* For Safari 5.1 to 6.0 */
-    background: -moz-linear-gradient(90deg, #55708fc9 0%, #000000 100%); /* For Firefox 15 and earlier */
-    background: -o-linear-gradient(90deg, #55708fc9 0%, #000000 100%); /* For Opera 11.1 to 12.0 */
-    background: -ms-linear-gradient(90deg, #55708fc9 0%, #000000 100%); /* For Internet Explorer 10 */
-    width: 300px;
-    margin: 5px auto 40px auto;
-    padding: 15px;
-    border-radius: 4px;
-    color: seashell
+@media screen and (max-width: 768px) {
+    .div--cards {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive columns */
+    }
 }
-
 
