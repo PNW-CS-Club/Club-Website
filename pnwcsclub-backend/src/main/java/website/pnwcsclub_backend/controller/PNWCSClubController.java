@@ -46,10 +46,17 @@ public class PNWCSClubController {
 
     @GetMapping("/employee")
     public String employee() {
-        String sql = "SELECT * FROM employee";
+        String sql = "SELECT * FROM employees";
         List<Map<String, Object>> rows;
         rows = jdbcTemplate.queryForList(sql);
         return rows.toString();
+    }
+
+    @GetMapping("/addEmp")
+    public String addEmp(int id, String name, String address) {
+        String sql = "INSERT INTO employees (id, name, address) VALUES (?, ?, ?)";
+        jdbcTemplate.update(sql, id, name, address);
+        return "Employee added!";
     }
 
 }

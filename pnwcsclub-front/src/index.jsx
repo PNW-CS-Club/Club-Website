@@ -15,6 +15,7 @@ import Events from "/src/pages/events";
 import Contact from "/src/pages/contact";
 import Blog from "/src/pages/blog";
 import Login from "/src/pages/login";
+import TestingPSQL from "/src/pages/testingPSQL";
 
 
 //create router this handles the routing of the website, if you want to add a new page
@@ -48,7 +49,11 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <Login />,
-      }
+      },
+      {
+        path: "testingPSQL",
+        element: <TestingPSQL />,
+      },
     ],
   },
 ]);
