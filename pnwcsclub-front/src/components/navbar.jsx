@@ -51,7 +51,7 @@ const Navbar = () => {
                         <Link to={'team'} aria-label="Team page" onClick={closeMenu}>Team</Link>
                     </li>
                     <li>
-                        <Link to={'resourcesw'} aria-label="Resources page" onClick={closeMenu}>Resources</Link>
+                        <Link to={'resources'} aria-label="Resources page" onClick={closeMenu}>Resources</Link>
                     </li>
                     <li>
                         <Link to={'login'} aria-label="Login page" onClick={closeMenu}>Login</Link>
