@@ -6,8 +6,8 @@
 TODO: Add the database dump file to the repository.
 
 spring.application.name=pnwcsclub
-spring.datasource.url=jdbc:postgresql:*************
-spring.datasource.username=******
-spring.datasource.password=*******
+spring.datasource.url=jdbc:postgresql://example:port/dbname?useSSL=false
+spring.datasource.username=username
+spring.datasource.password=password
 spring.jpa.hibernate.ddl-auto=<create | create-drop | update | validate | none>
 spring.jpa.hibernate.ddl-auto=none
