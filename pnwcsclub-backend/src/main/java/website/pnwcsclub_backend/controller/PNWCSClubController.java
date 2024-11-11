@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,27 +38,62 @@ public class PNWCSClubController {
         return "Hello, test2!";
     }
 
+    
     /*
-     * Anything related to PostgreSQL ---------TODO: fill out
+     * Anything related to PostgreSQL will go below, example below:
+     * /employee, and /addEmp
+     * 
      */
+
+
+     /*
+      * This class is a data transfer object (DTO) that will be used to pass data between the frontend and the backend.
+      */
+     public static class EmployeeDTO {
+        private int id;
+        private String name;
+        private String address;
+
+        // Getters and setters
+        public int getId() { return id; }
+        public void setId(int id) { this.id = id; }
+        public String getName() { return name; }
+        public void setName(String name) { this.name = name; }
+        public String getAddress() { return address; }
+        public void setAddress(String address) { this.address = address; }
+    }
   
      
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    /*
+     * This function will return all employees in the database. The jdbcTemplate.queryForList
+     * function will return a list of maps, where each map represents a row in the database.
+     * The map will have the column names as keys and the column values as values.
+     */
     @GetMapping("/employee")
     public String employee() {
         String sql = "SELECT * FROM employees";
         List<Map<String, Object>> rows;
-        rows = jdbcTemplate.queryForList(sql);
+        rows = jdbcTemplate.queryForList(sql); 
         return rows.toString();
     }
 
-    @GetMapping("/addEmp")
-    public String addEmp(int id, String name, String address) {
-        String sql = "INSERT INTO employees (id, name, address) VALUES (?, ?, ?)";
-        jdbcTemplate.update(sql, id, name, address);
-        return "Employee added!";
+    /*
+     * This function will add an employee to the database. The @RequestBody annotation
+     */
+    @PostMapping("/addEmp")
+    public String addEmp(@RequestBody EmployeeDTO employee) {
+        String sql = "INSERT INTO employees (name, address) VALUES (?, ?)";
+        try {
+            jdbcTemplate.update(sql,
+                                employee.getName(),
+                                employee.getAddress());
+            return "Employee added successfully!";
+        } catch (Exception e) {
+            return "Error adding employee: " + e.getMessage();
+        }
     }
 
 }
