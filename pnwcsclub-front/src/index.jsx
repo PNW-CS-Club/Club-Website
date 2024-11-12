@@ -16,7 +16,7 @@ import Contact from "/src/pages/contact";
 import Blog from "/src/pages/blog";
 import Login from "/src/pages/login";
 import TestingPSQL from "/src/pages/testingPSQL";
-import Resources from "./pages/Resources";
+import Resources from "src/pages/resources";
 
 
 //create router this handles the routing of the website, if you want to add a new page
