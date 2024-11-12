@@ -1,39 +1,38 @@
-
-
 .team-card {
-    margin: 0; 
-    padding: 1rem; 
-    border-radius: 12px; 
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
-    background: linear-gradient(90deg, #1053a0c9 0%, #0f5096 100%);
-    background: -webkit-linear-gradient(90deg, #1053a0c9 0%, #0f5096 100%); /* For Safari 5.1 to 6.0 */
-    background: -moz-linear-gradient(90deg, #1053a0c9 0%, #0f5096 100%); /* For Firefox 15 and earlier */
-    background: -o-linear-gradient(90deg, #1053a0c9 0%, #0f5096 100%); /* For Opera 11.1 to 12.0 */
-    background: -ms-linear-gradient(90deg, #1053a0c9 0%, #0f5096 100%); /* For Internet Explorer 10 */
-
-    height: 250px;
-    box-sizing: border-box; 
-    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem; 
+    padding: 1.5rem; 
+    border-radius: 15px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); 
+    background-color: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .team-card img {
-    width: 100px;
-    height: 100px;
-    border-radius: 25%;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
     object-fit: cover;
     margin-bottom: 1rem;
 }
 
 .team-card h3 {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     margin: 0.5rem 0;
-  }
-  
+    text-align: center;
+    color: #111827;
+}
+
 .team-card p {
     margin: 0.3rem 0;
-    color: #eeeeee;
+    color: #6B7280;
+    font-size: 1rem;
+    text-align: center;
 }
 
 .team-card:hover {
-    transform: translateY(-5px); /* Lift on hover */
+    transform: translateY(-10px); /* Lift on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }

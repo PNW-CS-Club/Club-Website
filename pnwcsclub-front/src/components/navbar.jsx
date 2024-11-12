@@ -51,8 +51,12 @@ const Navbar = () => {
                         <Link to={'team'} aria-label="Team page" onClick={closeMenu}>Team</Link>
                     </li>
                     <li>
+                        <Link to={'resources'} aria-label="Resources page" onClick={closeMenu}>Resources</Link>
+                    </li>
+                    <li>
                         <Link to={'login'} aria-label="Login page" onClick={closeMenu}>Login</Link>
                     </li>
+                    
                 </ul>
             </div>
             <div className={`hamburger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>
