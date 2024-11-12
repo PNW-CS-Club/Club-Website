@@ -1,0 +1,13 @@
+# This is an example of the application.properties file that should be created in the same directory as the application.properties.example file. 
+# This file(application.properties) should contain the actual database connection information and should not be committed to the repository.
+# If you need the database information, contactc Julian or Peter.
+# You can use a local database for development purposes. 
+# There will be a database dump file in the repository that you can use to create the local database(at some point).
+TODO: Add the database dump file to the repository.
+
+spring.application.name=pnwcsclub
+spring.datasource.url=jdbc:postgresql://example:port/dbname?useSSL=false
+spring.datasource.username=username
+spring.datasource.password=password
+spring.jpa.hibernate.ddl-auto=<create | create-drop | update | validate | none>
+spring.jpa.hibernate.ddl-auto=none

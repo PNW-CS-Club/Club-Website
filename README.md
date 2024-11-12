@@ -39,7 +39,7 @@ These are the tools we will be using to build our website:
 
 ## Backend
 * The backend is written in Java using the SpringBoot framework
- - You will need to have Java and Maven installed on your machine
+ - You will need to have Java 21+ and Maven installed on your machine
  - This is a good resource if you need help installing Maven(Windows): https://phoenixnap.com/kb/install-maven-windows
 * The backend is located in the `pnwcsclub-backend` folder
 * To run the backend, navigate to the `pnwcsclub-backend` folder in your CLI

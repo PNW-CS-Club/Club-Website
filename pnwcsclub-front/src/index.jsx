@@ -15,6 +15,7 @@ import Events from "/src/pages/events";
 import Contact from "/src/pages/contact";
 import Blog from "/src/pages/blog";
 import Login from "/src/pages/login";
+import TestingPSQL from "/src/pages/testingPSQL";
 import Resources from "./pages/Resources";
 
 
@@ -53,7 +54,11 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <Login />,
-      }
+      },
+      {
+        path: "testingPSQL",
+        element: <TestingPSQL />,
+      },
     ],
   },
 ]);
