@@ -81,7 +81,7 @@ public class PNWCSClubController {
     }
 
     /*
-     * This function will add an employee to the database. The @RequestBody annotation
+     * This function will add an employee to the database.
      */
     @PostMapping("/addEmp")
     public String addEmp(@RequestBody EmployeeDTO employee) {

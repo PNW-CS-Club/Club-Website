@@ -17,7 +17,7 @@ public class SpringConfiguration implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/api/**")
-                .allowedOrigins("http://localhost:5173") //no work, supposed to allow requests from this origin
+                .allowedOrigins("http://localhost:5173","https://pnwcsclub.com")
                 .allowedMethods("GET", "POST", "PUT", "DELETE")
                 .allowedHeaders("*");
     };          

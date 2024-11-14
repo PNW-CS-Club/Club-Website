@@ -14,6 +14,7 @@ This website will have information for all things related to the Purdue Universi
 
 ## Features
 * Blog editor
+* Event editor
 * User login
 
 ## Tech Stack
@@ -23,7 +24,7 @@ These are the tools we will be using to build our website:
 * Amazon Web Services, EC2(Compute), RDS(Database), Route53(DNS) - https://docs.aws.amazon.com/
 * PostgreSQL - https://www.postgresql.org/
 * GitHub
-* Jira - Project Management - https://www.atlassian.com/software/jira
+* GitHub Projects - https://github.com/orgs/PNW-CS-Club/projects/4
 * Selenium - Functionality Testing - https://www.selenium.dev/
 
 ## Getting Started - Developers
@@ -48,4 +49,4 @@ These are the tools we will be using to build our website:
  - If you want to test specific functions, you can do `localhost:8080/api/{function}`
 * You will want to have the frontend running as well to see the full website
 
-- If you have any questions, please reach out to Julian or Me(Peter)
+- If you have any questions, please reach out to Julian(@Bluju) or Peter(@peter-biz)
