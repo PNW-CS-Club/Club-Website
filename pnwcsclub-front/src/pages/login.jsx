@@ -19,7 +19,6 @@ export default function Login() {
     };
 
     const checkAuthCode = (authCode) => {
-        // Replace 'yourAuthCode' with the actual auth code you want to check against
         return authCode === validAuthCode;
     };
 
