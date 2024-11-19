@@ -1,2 +1,3 @@
 pnwcsclub-backend/src/main/resources/application.properties
 pnwcsclub-backend/src/main/resources/static
+login-auth.jsx
