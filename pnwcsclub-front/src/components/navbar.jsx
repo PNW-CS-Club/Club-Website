@@ -1,15 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import '/src/styles_components/navbar.css';
 import { Link, useLocation } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [currentPage, setCurrentPage] = useState('Home');
+    const [loggedIn, setLoggedIn] = useState(false);
     const location = useLocation();
 
     useEffect(() => {
         const path = location.pathname.slice(1);
         setCurrentPage(path ? path.charAt(0).toUpperCase() + path.slice(1) : 'Home');
+        
+        // Check authentication status
+        const token = Cookies.get('authToken');
+        if (token) {
+            setLoggedIn(true);
+            console.log('User is logged in');
+        } else {
+            setLoggedIn(false);
+            console.log('User is not logged in');
+        }
     }, [location]);
 
     const toggleMenu = () => {
@@ -54,9 +66,14 @@ const Navbar = () => {
                         <Link to={'resources'} aria-label="Resources page" onClick={closeMenu}>Resources</Link>
                     </li>
                     <li>
-                        <Link to={'login'} aria-label="Login page" onClick={closeMenu}>Login</Link>
+                        <Link 
+                            to={loggedIn ? 'account' : 'login'} 
+                            aria-label={loggedIn ? "Account page" : "Login page"} 
+                            onClick={closeMenu}
+                        >
+                            {loggedIn ? 'Account' : 'Login'}
+                        </Link>
                     </li>
-                    
                 </ul>
             </div>
             <div className={`hamburger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>

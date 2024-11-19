@@ -55,6 +55,9 @@ export default function Login() {
                 // Set the cookie {7 day expiration}
                 Cookies.set('authToken', response.data.token, { expires: 7 });
                 setLoggedIn(true);
+
+                // Redirect to the account page
+                window.location.href = '/account';
             } else {
                 alert('Login failed. Please try again.');
             }

@@ -17,7 +17,7 @@ import Blog from "/src/pages/blog";
 import Login from "/src/pages/login";
 import TestingPSQL from "/src/pages/testingPSQL";
 import Resources from "/src/pages/resources";
-
+import Account from "/src/pages/account";
 
 //create router this handles the routing of the website, if you want to add a new page
 // you need to add a new route here, follow the format of the existing routes(team for example)
@@ -58,6 +58,10 @@ const router = createBrowserRouter([
       {
         path: "testingPSQL",
         element: <TestingPSQL />,
+      },
+      {
+        path: "account",
+        element: <Account />,
       },
     ],
   },
