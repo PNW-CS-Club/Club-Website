@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '/src/styles_pages/login.css';
 import { authCode as validAuthCode } from '/src/components/login-auth.jsx';
 import http from '../http-common';
+import Cookies from "js-cookie";
 
 /*
 You will have a form that looks like this to create an account:
@@ -13,7 +14,21 @@ You will have a form that looks like this to create an account:
 
 export default function Login() {
     const [isLogin, setIsLogin] = useState(true);
-    const [authCode, setAuthCode] = useState('');
+    const [loggedIn, setLoggedIn] = useState(false);
+
+    useEffect(() => {
+        // Check if the user is already logged in
+        // If so, redirect them to the home page
+        const token = Cookies.get('authToken')
+        if (token) {
+            // Redirect to the home page
+            setLoggedIn(true);
+            console.log('User is already logged in');
+        }
+        else {
+            console.log('User is not logged in');
+        }
+    } , []);
 
     const toggleForm = () => {
         setIsLogin(!isLogin);
@@ -34,12 +49,25 @@ export default function Login() {
                 username: username,
                 password: password
             });
-
-            alert('Login successful!');
+            if(response.data == "Login successful!") {
+                alert('Login successful!');
+               
+                // Set the cookie {7 day expiration}
+                Cookies.set('authToken', response.data.token, { expires: 7 });
+                setLoggedIn(true);
+            } else {
+                alert('Login failed. Please try again.');
+            }
 
         } catch (err) {
             alert('Error logging in. Please try again later.');
         }
+    };
+
+    const handleLogout = () => {
+        Cookies.remove('authToken');
+        setLoggedIn(false);
+        window.location.href = '/';
     };
 
     const createLogin = async (event) => {
@@ -49,7 +77,7 @@ export default function Login() {
         const password = form.password.value;
 
         try {
-            const response = await http.post('/create-login', {
+            const response = await http.post('/createLogin', {
                 username: username,
                 password: password
             });
@@ -82,7 +110,7 @@ export default function Login() {
             {isLogin ? (
                 <div className="login-form">
                     <h1>Login: </h1>
-                    <form>
+                    <form onSubmit={handleLogin}>
                         <label>
                             Username:
                             <input type="text" name="username" />
@@ -118,6 +146,9 @@ export default function Login() {
                     </form>
                 </div>
             )}
+
+
+            <button onClick={handleLogout}>Logout</button>
         </div>
     );
 }

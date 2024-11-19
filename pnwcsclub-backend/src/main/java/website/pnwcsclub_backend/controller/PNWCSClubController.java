@@ -5,13 +5,13 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.security.crypto.bcrypt.BCrypt;
 
 
 @CrossOrigin
@@ -100,10 +100,10 @@ public class PNWCSClubController {
 
 
     //TODO: FIXME: doesnt work :0
-    @PostMapping("/create-login")
+    @PostMapping("/createLogin")
     public String createLogin(@RequestBody Map<String, String> login) {
         String pass_hash = BCrypt.hashpw(login.get("password"), BCrypt.gensalt());
-        String sql = "INSERT INTO logins (username, password_hash) VALUES (?, ?)";
+        String sql = "INSERT INTO users (username, password_hash) VALUES (?, ?)";
         try {
             jdbcTemplate.update(sql,
                                 login.get("username"),
@@ -116,7 +116,7 @@ public class PNWCSClubController {
 
     @PostMapping("/login")
     public String login(@RequestBody Map<String, String> login) {
-        String sql = "SELECT password_hash FROM logins WHERE username = ?";
+        String sql = "SELECT password_hash FROM users WHERE username = ?";
         List<Map<String, Object>> rows;
         rows = jdbcTemplate.queryForList(sql, login.get("username"));
         if (rows.size() == 0) {
@@ -129,6 +129,15 @@ public class PNWCSClubController {
                 return "Login failed!";
             }
         }
+    }
+
+    //TEMPORARY REMOVE LATER TODO: REMOVE
+    @GetMapping("/getLogin")
+    public String getLogin() {
+        String sql = "SELECT * FROM users";
+        List<Map<String, Object>> rows;
+        rows = jdbcTemplate.queryForList(sql); 
+        return rows.toString();
     }
 
 }
