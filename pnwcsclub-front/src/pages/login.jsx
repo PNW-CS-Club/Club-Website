@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '/src/styles_pages/login.css';
 import { authCode as validAuthCode } from '/src/components/login-auth.jsx';
+import http from '../http-common';
 
 /*
 You will have a form that looks like this to create an account:
@@ -22,6 +23,44 @@ export default function Login() {
         return authCode === validAuthCode;
     };
 
+    const handleLogin = async (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const username = form.username.value;
+        const password = form.password.value;
+
+        try {
+            const response = await http.post('/login', {
+                username: username,
+                password: password
+            });
+
+            alert('Login successful!');
+
+        } catch (err) {
+            alert('Error logging in. Please try again later.');
+        }
+    };
+
+    const createLogin = async (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const username = form.username.value;
+        const password = form.password.value;
+
+        try {
+            const response = await http.post('/create-login', {
+                username: username,
+                password: password
+            });
+
+            handleLogin(event);
+
+        } catch (err) {
+            alert('Error creating account. Please try again later.');
+        }
+    };
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -29,9 +68,9 @@ export default function Login() {
 
         if (checkAuthCode(authCode)) {
             alert('Account created successfully!');
-            // Add your account creation logic here
+            createLogin(event);
         } else {
-            alert('Invalid auth code.');
+            alert('Invalid auth code. Please try again or contact an admin.');
         }
     };
 

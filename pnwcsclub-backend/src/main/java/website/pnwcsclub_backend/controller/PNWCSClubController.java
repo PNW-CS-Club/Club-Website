@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+
 
 @CrossOrigin
 @RestController
@@ -93,6 +95,38 @@ public class PNWCSClubController {
             return "Employee added successfully!";
         } catch (Exception e) {
             return "Error adding employee: " + e.getMessage();
+        }
+    }
+
+
+    @PostMapping("/create-login")
+    public String createLogin(@RequestBody Map<String, String> login) {
+        String pass_hash = BCrypt.hashpw(login.get("password"), BCrypt.gensalt());
+        String sql = "INSERT INTO logins (username, password_hash) VALUES (?, ?)";
+        try {
+            jdbcTemplate.update(sql,
+                                login.get("username"),
+                                pass_hash);
+            return "Login created successfully!";
+        } catch (Exception e) {
+            return "Error creating login: " + e.getMessage();
+        }
+    }
+
+    @PostMapping("/login")
+    public String login(@RequestBody Map<String, String> login) {
+        String sql = "SELECT password_hash FROM logins WHERE username = ?";
+        List<Map<String, Object>> rows;
+        rows = jdbcTemplate.queryForList(sql, login.get("username"));
+        if (rows.size() == 0) {
+            return "Login failed!";
+        } else {
+            String storedHash = (String) rows.get(0).get("password_hash");
+            if (BCrypt.checkpw(login.get("password"), storedHash)) {
+                return "Login successful!";
+            } else {
+                return "Login failed!";
+            }
         }
     }
 
