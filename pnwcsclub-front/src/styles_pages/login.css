@@ -16,7 +16,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 400px;
+    max-width: 500px; /* Increased max-width */
     text-align: center;
 }
 
@@ -52,22 +52,24 @@ body {
 .login-form label,
 .creation-form label {
     width: 100%;
-    max-width: 300px;
+    max-width: 400px; /* Increased max-width */
     margin-bottom: 10px;
     text-align: left;
     font-weight: bold;
     color: #000000;
+    display: block; /* Ensure labels take full width */
 }
 
 .login-form input,
 .creation-form input {
     width: 100%;
-    max-width: 300px;
+    max-width: 400px; /* Increased max-width */
     padding: 10px;
     margin: 5px 0 20px 0;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
+    display: block; /* Ensure inputs take full width */
 }
 
 .login-form button,
