@@ -17,10 +17,10 @@ const Navbar = () => {
         const token = Cookies.get('authToken');
         if (token) {
             setLoggedIn(true);
-            console.log('User is logged in');
+            //console.log('User is logged in');
         } else {
             setLoggedIn(false);
-            console.log('User is not logged in');
+            //console.log('User is not logged in');
         }
     }, [location]);
 

@@ -36,7 +36,6 @@ export default function Login() {
             return;
         }
         
-
         try {
             if (isLogin) {
                 // Handle login
@@ -44,8 +43,10 @@ export default function Login() {
                     username: formData.username,
                     password: formData.password
                 });
-
-                if (loginResponse.data === "Login successful!") {
+    
+                console.log('Login response:', loginResponse.data);
+    
+                if (loginResponse.data.message === "Login successful!") {
                     Cookies.set('authToken', loginResponse.data.token, { expires: 7 });
                     window.location.href = '/account';
                 } else {
@@ -58,15 +59,17 @@ export default function Login() {
                     password: formData.password,
                     authCode: formData.authCode
                 });
-
-                if (createResponse.data === "Login created successfully") {
+        
+                if (createResponse.data === "Login created successfully!") {
                     // If account creation is successful, attempt to log in
                     const loginResponse = await http.post('/login', {
                         username: formData.username,
                         password: formData.password
                     });
-
-                    if (loginResponse.data === "Login successful!") {
+    
+                    console.log('Login response after account creation:', loginResponse.data);
+    
+                    if (loginResponse.data.message === "Login successful!") {
                         Cookies.set('authToken', loginResponse.data.token, { expires: 7 });
                         window.location.href = '/account';
                     } else {
@@ -74,16 +77,14 @@ export default function Login() {
                         setIsLogin(true);
                     }
                 } else {
-                    // The error message is included in the response
-                    alert("Error creating account! Please try again or contact an admin.");
+                    alert('Error creating account. Please try again or contact an admin.');
                 }
             }
         } catch (err) {
+            console.error('Error:', err);
             if (!isLogin && err.response?.data) {
-                // For account creation errors, display the specific error message
                 alert("Error creating account! Please try again or contact an admin.");
             } else {
-                // For login errors or network issues
                 alert(isLogin ? 'Login failed. Please try again.' : 'Error creating account. Please try again.');
             }
         }

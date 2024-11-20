@@ -1,12 +1,12 @@
 package website.pnwcsclub_backend.controller;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 
 
 @CrossOrigin
@@ -46,25 +47,19 @@ public class PNWCSClubController {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    @Value("${auth.code}")
+    private String validAuthCode;
+
+    
 
     /*
      * LOGIN SYSTEM
      */
-    private String getValidAuthCode() {
-        String validAuthCode;
-        try {
-            validAuthCode = new String(Files.readAllBytes(Paths.get("src/main/resources/login-auth.txt")));
-        } catch (IOException e) {
-            e.printStackTrace();
-            validAuthCode = "";
-        }
-        return validAuthCode;
-    }
 
     @PostMapping("/createLogin")
     public String createLogin(@RequestBody Map<String, String> login) {
         String authCode = login.get("authCode");
-        if (!authCode.equals(getValidAuthCode())) {
+        if (!authCode.equals(validAuthCode)) {
             return "Invalid auth code!";
         }
         String pass_hash = BCrypt.hashpw(login.get("password"), BCrypt.gensalt());
@@ -80,28 +75,24 @@ public class PNWCSClubController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody Map<String, String> login) {
+    public Map<String, String> login(@RequestBody Map<String, String> login) {
         String sql = "SELECT password_hash FROM users WHERE username = ?";
         List<Map<String, Object>> rows;
         rows = jdbcTemplate.queryForList(sql, login.get("username"));
+        Map<String, String> response = new HashMap<>();
         if (rows.size() == 0) {
-            return "Login failed!";
+            response.put("message", "Login failed!");
         } else {
             String storedHash = (String) rows.get(0).get("password_hash");
             if (BCrypt.checkpw(login.get("password"), storedHash)) {
-                return "Login successful!";
+                // Generate a simple token for demonstration purposes
+                String token = UUID.randomUUID().toString();
+                response.put("message", "Login successful!");
+                response.put("token", token);
             } else {
-                return "Login failed!";
+                response.put("message", "Login failed!");
             }
         }
-    }
-
-    //TEMPORARY REMOVE LATER TODO: REMOVE
-    @GetMapping("/getLogin")
-    public String getLogin() {
-        String sql = "SELECT * FROM users";
-        List<Map<String, Object>> rows;
-        rows = jdbcTemplate.queryForList(sql); 
-        return rows.toString();
+        return response;
     }
 }
