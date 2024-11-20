@@ -18,8 +18,9 @@ public class SpringConfiguration implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/api/**")
                 .allowedOrigins("http://localhost:5173","https://pnwcsclub.com")
-                .allowedMethods("GET", "POST", "PUT", "DELETE")
-                .allowedHeaders("*");
+                .allowedMethods("GET", "POST")
+                .allowedHeaders("Content-Type", "Authorization")
+                .allowCredentials(true);
     };          
 
  

@@ -11,3 +11,5 @@ spring.datasource.username=username
 spring.datasource.password=password
 spring.jpa.hibernate.ddl-auto=<create | create-drop | update | validate | none>
 spring.jpa.hibernate.ddl-auto=none
+
+auth.code=exampleAuthCode

@@ -1,128 +1,121 @@
 import React, { useState, useEffect } from 'react';
 import '/src/styles_pages/login.css';
-import { authCode as validAuthCode } from '/src/components/login-auth.jsx';
 import http from '../http-common';
-import Cookies from "js-cookie";
-
-/*
-You will have a form that looks like this to create an account:
- * 
- *  Username: ********
- *  Password: ********
- *  Auth Code: ********
- */
+import Cookies from 'js-cookie';
 
 export default function Login() {
     const [isLogin, setIsLogin] = useState(true);
-    const [loggedIn, setLoggedIn] = useState(false);
+    const [formData, setFormData] = useState({
+        username: '',
+        password: '',
+        confirmPassword: '',
+        authCode: ''
+    });
 
     useEffect(() => {
-        // Check if the user is already logged in
-        // If so, redirect them to the home page
-        const token = Cookies.get('authToken')
+        const token = Cookies.get('authToken');
         if (token) {
-            // Redirect to the home page
-            setLoggedIn(true);
-            console.log('User is already logged in');
+            window.location.href = '/account';
         }
-        else {
-            console.log('User is not logged in');
-        }
-    } , []);
+    }, []);
 
-    const toggleForm = () => {
-        setIsLogin(!isLogin);
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
     };
 
-    const checkAuthCode = (authCode) => {
-        return authCode === validAuthCode;
-    };
-
-    const handleLogin = async (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        const form = event.target;
-        const username = form.username.value;
-        const password = form.password.value;
+        
+        // Basic validation for password match
+        if (!isLogin && formData.password !== formData.confirmPassword) {
+            alert('Passwords do not match!');
+            return;
+        }
+        
 
         try {
-            const response = await http.post('/login', {
-                username: username,
-                password: password
-            });
-            if(response.data == "Login successful!") {
-                alert('Login successful!');
-               
-                // Set the cookie {7 day expiration}
-                Cookies.set('authToken', response.data.token, { expires: 7 });
-                setLoggedIn(true);
+            if (isLogin) {
+                // Handle login
+                const loginResponse = await http.post('/login', {
+                    username: formData.username,
+                    password: formData.password
+                });
 
-                // Redirect to the account page
-                window.location.href = '/account';
+                if (loginResponse.data === "Login successful!") {
+                    Cookies.set('authToken', loginResponse.data.token, { expires: 7 });
+                    window.location.href = '/account';
+                } else {
+                    alert('Login failed. Please try again.');
+                }
             } else {
-                alert('Login failed. Please try again.');
+                // Handle account creation
+                const createResponse = await http.post('/createLogin', {
+                    username: formData.username,
+                    password: formData.password,
+                    authCode: formData.authCode
+                });
+
+                if (createResponse.data === "Login created successfully") {
+                    // If account creation is successful, attempt to log in
+                    const loginResponse = await http.post('/login', {
+                        username: formData.username,
+                        password: formData.password
+                    });
+
+                    if (loginResponse.data === "Login successful!") {
+                        Cookies.set('authToken', loginResponse.data.token, { expires: 7 });
+                        window.location.href = '/account';
+                    } else {
+                        alert('Account created but login failed. Please try logging in.');
+                        setIsLogin(true);
+                    }
+                } else {
+                    // The error message is included in the response
+                    alert("Error creating account! Please try again or contact an admin.");
+                }
             }
-
         } catch (err) {
-            alert('Error logging in. Please try again later.');
-        }
-    };
-
-    const handleLogout = () => {
-        Cookies.remove('authToken');
-        setLoggedIn(false);
-        window.location.href = '/';
-    };
-
-    const createLogin = async (event) => {
-        event.preventDefault();
-        const form = event.target;
-        const username = form.username.value;
-        const password = form.password.value;
-
-        try {
-            const response = await http.post('/createLogin', {
-                username: username,
-                password: password
-            });
-
-            handleLogin(event);
-
-        } catch (err) {
-            alert('Error creating account. Please try again later.');
-        }
-    };
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const form = event.target;
-        const authCode = form.authCode.value;
-
-        if (checkAuthCode(authCode)) {
-            alert('Account created successfully!');
-            createLogin(event);
-        } else {
-            alert('Invalid auth code. Please try again or contact an admin.');
+            if (!isLogin && err.response?.data) {
+                // For account creation errors, display the specific error message
+                alert("Error creating account! Please try again or contact an admin.");
+            } else {
+                // For login errors or network issues
+                alert(isLogin ? 'Login failed. Please try again.' : 'Error creating account. Please try again.');
+            }
         }
     };
 
     return (
         <div className="login-page">
-            <button onClick={toggleForm}>
-                {isLogin ? 'Create a New Account' : 'Login Page'}
-            </button>
             {isLogin ? (
                 <div className="login-form">
                     <h1>Login: </h1>
-                    <form onSubmit={handleLogin}>
+                    <form onSubmit={handleSubmit}>
                         <label>
                             Username:
-                            <input type="text" name="username" />
+                            <input
+                                type="text"
+                                name="username"
+                                value={formData.username}
+                                onChange={handleInputChange}
+                                required
+                            />
                         </label>
                         <label>
                             Password:
-                            <input type="password" name="password" />
+                            <input
+                                type="password"
+                                name="password"
+                                value={formData.password}
+                                onChange={handleInputChange}
+                                required
+                            />
                         </label>
-                        <button type="submit">Submit</button>
+                        <button type="submit">Login</button>
                     </form>
                 </div>
             ) : (
@@ -131,27 +124,52 @@ export default function Login() {
                     <form onSubmit={handleSubmit}>
                         <label>
                             Username:
-                            <input type="text" name="username" />
+                            <input
+                                type="text"
+                                name="username"
+                                value={formData.username}
+                                onChange={handleInputChange}
+                                required
+                            />
                         </label>
                         <label>
                             Password:
-                            <input type="password" name="password" />
+                            <input
+                                type="password"
+                                name="password"
+                                value={formData.password}
+                                onChange={handleInputChange}
+                                required
+                            />
                         </label>
                         <label>
                             Confirm Password:
-                            <input type="password" name="confirmPassword" />
+                            <input
+                                type="password"
+                                name="confirmPassword"
+                                value={formData.confirmPassword}
+                                onChange={handleInputChange}
+                                required
+                            />
                         </label>
                         <label>
                             Auth Code:
-                            <input type="text" name="authCode" />
+                            <input
+                                type="text"
+                                name="authCode"
+                                value={formData.authCode}
+                                onChange={handleInputChange}
+                                required
+                            />
                         </label>
                         <button type="submit">Create Account</button>
                     </form>
                 </div>
             )}
 
-
-            <button onClick={handleLogout}>Logout</button>
+            <button onClick={() => setIsLogin(!isLogin)}>
+                {isLogin ? 'Create a New Account' : 'Login Page'}
+            </button>
         </div>
     );
 }
