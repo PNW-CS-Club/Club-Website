@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -91,10 +92,37 @@ public class PNWCSClubController {
                 String token = UUID.randomUUID().toString();
                 response.put("message", "Login successful!");
                 response.put("token", token); //TODO: Store this token in the database and check if unique
+                
+                String updateToken = "UPDATE users SET auth_token = ? WHERE username = ?";
+                jdbcTemplate.update(updateToken, token, login.get("username")); // Update the token in the database
             } else {
                 response.put("message", "Login failed!");
             }
         }
         return response;
+    }
+
+    @GetMapping("/username")
+    public String getUsername(@RequestHeader("Authorization") String token) {
+        String authToken = token.replace("Bearer ", "");
+        String sql = "SELECT username FROM users WHERE auth_token = ?";
+        List<Map<String, Object>> rows = jdbcTemplate.queryForList(sql, authToken);
+        if (rows.isEmpty()) {
+            return "Invalid token!";
+        } else {
+            return (String) rows.get(0).get("username");
+        }
+    }
+
+
+    @PostMapping("/logout") 
+    public String logout(@RequestBody Map<String, String> login) {
+        String sql = "UPDATE users SET auth_token = NULL WHERE auth_token = ?";
+        try {
+            jdbcTemplate.update(sql, login.get("auth_token"));
+            return "Logout successful!";
+        } catch (Exception e) {
+            return "Error logging out: " + e.getMessage();
+        }
     }
 }
