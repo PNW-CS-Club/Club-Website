@@ -1,4 +1,6 @@
 import { useRouteError } from "react-router-dom";
+import '/src/styles_pages/error.css';
+
 
 // Error page component
 export default function ErrorPage() {
@@ -8,10 +10,13 @@ export default function ErrorPage() {
     return (
         <div id="error-page">
             <h1>Oops!</h1>
-            <p>Sorry, an unexpected error has occurred.</p>
+            <p>Sorry, this page doesn't exist.</p>
             <p>
                 <i>{error.statusText || error.message}</i>
             </p>
+            <button onClick={() => window.location.href = '/'}>Go Home</button>
         </div>
     );
+
+
 }
