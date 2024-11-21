@@ -12,6 +12,20 @@ import org.springframework.web.servlet.resource.ResourceResolverChain;
 
 import jakarta.servlet.http.HttpServletRequest;
 
+/*
+ * This file is the main configuration file for the Spring application. It is
+ * used to configure the application to allow for CORS (Cross-Origin Resource
+ * Sharing) requests, which are requests that are made from a different domain
+ * than the one that the server is hosted on. This is necessary for the frontend
+ * to be able to make requests to the backend. The addCorsMappings method is used
+ * to configure the application to allow for CORS requests. The addResourceHandlers
+ * method is used to configure the application to serve static files from the
+ * /static directory. This is necessary for the frontend to be able to access the
+ * static files that are served by the backend.
+ * 
+ * Please don't modify this file unless you know what you're doing.
+ */
+
 @Configuration
 public class SpringConfiguration implements WebMvcConfigurer {
     @Override

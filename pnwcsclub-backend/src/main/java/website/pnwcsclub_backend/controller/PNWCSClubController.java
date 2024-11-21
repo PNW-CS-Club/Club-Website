@@ -44,17 +44,17 @@ public class PNWCSClubController {
         return "Hello, test2!";
     }
      
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
-
-    @Value("${auth.code}")
-    private String validAuthCode;
-
-    
-
     /*
      * LOGIN SYSTEM
      */
+
+    
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
+    // Get the auth code from the application.properties file
+    @Value("${auth.code}")
+    private String validAuthCode;
 
     @PostMapping("/createLogin")
     public String createLogin(@RequestBody Map<String, String> login) {
@@ -62,10 +62,11 @@ public class PNWCSClubController {
         if (!authCode.equals(validAuthCode)) {
             return "Invalid auth code!";
         }
-        String pass_hash = BCrypt.hashpw(login.get("password"), BCrypt.gensalt());
+        String pass_hash = BCrypt.hashpw(login.get("password"), BCrypt.gensalt()); // Hash the password
         String sql = "INSERT INTO users (username, password_hash) VALUES (?, ?)";
+        // Try to insert the login into the database
         try {
-            jdbcTemplate.update(sql,
+            jdbcTemplate.update(sql, 
                                 login.get("username"),
                                 pass_hash);
             return "Login created successfully!";
@@ -77,18 +78,19 @@ public class PNWCSClubController {
     @PostMapping("/login")
     public Map<String, String> login(@RequestBody Map<String, String> login) {
         String sql = "SELECT password_hash FROM users WHERE username = ?";
-        List<Map<String, Object>> rows;
+        List<Map<String, Object>> rows; // List of rows returned by the query
         rows = jdbcTemplate.queryForList(sql, login.get("username"));
-        Map<String, String> response = new HashMap<>();
-        if (rows.size() == 0) {
+        Map<String, String> response = new HashMap<>(); 
+        if (rows.isEmpty()) {
             response.put("message", "Login failed!");
         } else {
+            // Check if the password matches the stored hash
             String storedHash = (String) rows.get(0).get("password_hash");
             if (BCrypt.checkpw(login.get("password"), storedHash)) {
-                // Generate a simple token for demonstration purposes
+                // Generate a simple token for demonstration purposes //TODO: Implement a more secure token system
                 String token = UUID.randomUUID().toString();
                 response.put("message", "Login successful!");
-                response.put("token", token);
+                response.put("token", token); //TODO: Store this token in the database and check if unique
             } else {
                 response.put("message", "Login failed!");
             }
