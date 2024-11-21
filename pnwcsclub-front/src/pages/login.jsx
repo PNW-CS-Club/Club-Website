@@ -48,7 +48,6 @@ export default function Login() {
                     Cookies.set('authToken', loginResponse.data.token, { expires: 7 });
                     window.location.href = '/account';
                 } else {
-                    console.log('Login response:', loginResponse.data); //TODO:
                     alert('Login failed. Please try again.');
                 }
             } else {
@@ -76,7 +75,6 @@ export default function Login() {
                         setIsLogin(true);
                     }
                 } else {
-                    console.log('Create response:', createResponse.data); //TODO:
                     alert('Error creating account. Please try again or contact an admin.');
                 }
             }
@@ -85,7 +83,6 @@ export default function Login() {
             if (!isLogin && err.response?.data) {
                 alert("Error creating account! Please try again or contact an admin.");
             } else {
-                console.log('Error response:', err.response?.data); //TODO:
                 alert(isLogin ? 'Login failed. Please try again.' : 'Error creating account. Please try again.');
             }
         }
