@@ -1,4 +1,6 @@
 /* General styling for the page */
+
+/*
 body {
     font-family: 'Open Sans', sans-serif;
     background-color: #e1e5ee;
@@ -9,7 +11,7 @@ body {
     align-items: center;
     height: 100vh;
 }
-
+*/
 .login-page {
     background-color: #fff;
     padding: 20px;
