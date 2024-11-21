@@ -4,7 +4,8 @@ begin;
 
 create table users(
 	username VARCHAR(255) primary key,
-	password_hash VARCHAR(255) not null
+	password_hash VARCHAR(255) not null,
+	auth_token VARCHAR(255) unique
 );
 
 create table blog(
