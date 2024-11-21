@@ -43,9 +43,7 @@ export default function Login() {
                     username: formData.username,
                     password: formData.password
                 });
-    
-                console.log('Login response:', loginResponse.data);
-    
+        
                 if (loginResponse.data.message === "Login successful!") {
                     Cookies.set('authToken', loginResponse.data.token, { expires: 7 });
                     window.location.href = '/account';
