@@ -2,7 +2,7 @@
 export default {
   content: ["./src/**/*.{html,js,jsx}"],
   theme: {
-    extend: {},
+    extend: {
     colors: {
       'gold': '#E6B10E',
       'hover-gold': '#C49917',
@@ -12,8 +12,13 @@ export default {
       'alice-blue': '#e1e5ee',
       'white': '#ffffff',
       'black': '#000000',
-      
     },
+    fontFamily: {
+      title: ['Montserrat', 'sans-serif'],
+      body: ['Open Sans', 'sans-serif'],
+      body2: ['Playfair Display', 'serif'],
+    }
+  },
   },
   plugins: [],
 }
