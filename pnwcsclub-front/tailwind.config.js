@@ -10,8 +10,6 @@ export default {
       'slate-gray': '#718c8c',
       'french-gray': '#c7ccdb',
       'alice-blue': '#e1e5ee',
-      'white': '#ffffff',
-      'black': '#000000',
     },
     fontFamily: {
       title: ['Montserrat', 'sans-serif'],
