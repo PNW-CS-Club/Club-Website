@@ -74,7 +74,11 @@ export default function Login() {
                         alert('Account created but login failed. Please try logging in.');
                         setIsLogin(true);
                     }
-                } else {
+                } else if(createResponse.data === "Password is not strong enough!") {
+                    alert('Password is not strong enough! Please try again.');
+
+                } 
+                else {
                     alert('Error creating account. Please try again or contact an admin.');
                 }
             }
@@ -138,9 +142,9 @@ export default function Login() {
                                 name="password"
                                 value={formData.password}
                                 onChange={handleInputChange}
-                                required
-                            />
-                        </label>
+                                required //<!--TODO: Add password strength checker-->
+                            /> 
+                        </label> 
                         <label>
                             Confirm Password:
                             <input
@@ -164,6 +168,7 @@ export default function Login() {
                         <button type="submit">Create Account</button>
                     </form>
                 </div>
+                
             )}
 
             <button onClick={() => setIsLogin(!isLogin)}>

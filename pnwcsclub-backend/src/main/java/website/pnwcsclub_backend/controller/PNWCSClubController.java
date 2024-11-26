@@ -44,11 +44,34 @@ public class PNWCSClubController {
     public String test2() {
         return "Hello, test2!";
     }
-     
+
     /*
-     * LOGIN SYSTEM
+     * Helper functions for login system.
      */
 
+    // Check if the password is strong enough
+    // Based on these requirements a password must be at least 8 characters long,
+    // contain at least one uppercase letter, one lowercase letter, one number, and
+    // one special character.
+    private boolean isPasswordStrong(String password) {
+        return password.length() >= 8 &&
+        password.matches(".*[A-Z].*") &&
+        password.matches(".*[a-z].*") &&
+        password.matches(".*[0-9].*") &&
+        password.matches(".*[!@#$%^&*].*"); 
+    }
+
+    //TODO: Implement a function to check if a token is valid
+    //TODO: add a rate limiting system to prevent brute force attacks
+
+
+    /*
+     * LOGIN SYSTEM
+     * |_ createLogin
+     * |_ login
+     * |_ getUsername
+     * |_ logout
+     */
     
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -62,6 +85,9 @@ public class PNWCSClubController {
         String authCode = login.get("authCode");
         if (!authCode.equals(validAuthCode)) {
             return "Invalid auth code!";
+        }
+        if (!isPasswordStrong(login.get("password"))) {
+            return "Password is not strong enough!";
         }
         String pass_hash = BCrypt.hashpw(login.get("password"), BCrypt.gensalt()); // Hash the password
         String sql = "INSERT INTO users (username, password_hash) VALUES (?, ?)";
@@ -101,6 +127,8 @@ public class PNWCSClubController {
         }
         return response;
     }
+
+
 
     @GetMapping("/username")
     public String getUsername(@RequestHeader("Authorization") String token) {
