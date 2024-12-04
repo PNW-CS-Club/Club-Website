@@ -17,6 +17,10 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+
 
 
 @CrossOrigin
@@ -124,5 +128,22 @@ public class PNWCSClubController {
         } catch (Exception e) {
             return "Error logging out: " + e.getMessage();
         }
+    }
+
+
+    /*
+     * BLOG SYSTEM - USING S3
+     */
+
+    @Value("${aws.s3.bucket}");
+    private String bucketName;
+
+    //SIMPLE S3 bucket that stores an md file object, and returns the object
+    @GetMapping("/getBlog")
+    //TODO: implement a way to get a SPECIFIC blog post
+    public String getBlog() {
+        AmazonS3 s3 = AmazonS3ClientBuilder.defaultClient();
+        String object = s3.getObjectAsString(bucketName, "test.md");
+        return object;
     }
 }
