@@ -21,7 +21,7 @@ export default function Contact() {
                 <ul className="space-y-6 font-body">
                     <li className="flex items-center space-x-4 hover:bg-gray-50 p-4 rounded-lg transition-colors">
                         <FaEnvelope className="text-2xl text-blue-500" />
-                        <span className="text-gray-700">Email: </span>
+                        <span className="text-gray-700">Club Presdient Email: </span>
                         <a href="mailto:jasahagun@pnw.edu" 
                            className="text-blue-600 hover:text-blue-800 hover:underline">
                             jasahagun@pnw.edu
