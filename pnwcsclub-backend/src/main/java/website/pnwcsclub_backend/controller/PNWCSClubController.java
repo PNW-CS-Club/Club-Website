@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import org.slf4j.Logger;
+
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -44,6 +47,25 @@ public class PNWCSClubController {
     public String test2() {
         return "Hello, test2!";
     }
+
+    /*
+     *  S3 stuff
+     */
+
+    private static final Logger logger = LoggerFactory.getLogger(PNWCSClubController.class);
+
+    @PostMapping("/uploadBlog")
+    public String createBlogPost(@RequestBody String request_data){
+
+
+
+        //System.out.println("Recieved Request : " + request_data);
+        logger.info("Blog request body: {}", request_data);
+        return "Request Recieved";
+    }
+
+    //@GetMapping("/uploadBlog") // I think we need this to display blogs
+
      
     /*
      * LOGIN SYSTEM
