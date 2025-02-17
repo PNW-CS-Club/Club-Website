@@ -29,8 +29,20 @@
 	<properties>
 		<java.version>21</java.version>
 	</properties>
-	<dependencies>
 
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>software.amazon.awssdk</groupId>
+				<artifactId>bom</artifactId>
+				<version>2.29.29</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -70,11 +82,13 @@
 		</dependency>
 
 		<!-- aws dependency-->
+		<!--
 		<dependency>
 			<groupId>com.amazonaws</groupId>
 			<artifactId>aws-java-sdk-s3</artifactId>
 			<version>1.12.502</version>
 		</dependency>
+		-->
 
 		<!--logger Stuff-->
 		<dependency>
@@ -90,6 +104,12 @@
     		<version>2.0.9</version>
 		</dependency>
 
+	
+		<dependency>
+			<groupId>software.amazon.awssdk</groupId>
+			<artifactId>s3</artifactId>
+		</dependency>
+	
 	</dependencies>
 
 	<build>

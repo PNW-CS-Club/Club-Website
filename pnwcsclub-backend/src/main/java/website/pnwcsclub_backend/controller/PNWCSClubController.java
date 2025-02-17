@@ -20,8 +20,6 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
-
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
@@ -147,4 +145,14 @@ public class PNWCSClubController {
             return "Error logging out: " + e.getMessage();
         }
     }
+
+
+    /*
+     * BLOG SYSTEM - USING S3
+     * FIXME: note, currently this system will just directly get and create blogs from the S3 bucket
+     * in the future it will be updated to use the database to store the keys and other metadata
+     * for the blogs
+     */
+    @Value("${aws.s3.bucket}")
+    private String bucketName;
 }

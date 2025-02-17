@@ -13,3 +13,5 @@ spring.jpa.hibernate.ddl-auto=<create | create-drop | update | validate | none>
 spring.jpa.hibernate.ddl-auto=none
 
 auth.code=exampleAuthCode
+aws.s3.bucket=exampleBucketName
+
