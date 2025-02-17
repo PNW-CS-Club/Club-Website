@@ -81,8 +81,8 @@
 			<artifactId>jakarta.validation-api</artifactId>
 		</dependency>
 
-		<!-- aws dependency-->
-		<!--
+		<!-- aws dependency
+		
 		<dependency>
 			<groupId>com.amazonaws</groupId>
 			<artifactId>aws-java-sdk-s3</artifactId>
